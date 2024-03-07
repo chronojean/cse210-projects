@@ -8,7 +8,7 @@ class Program
         while (repeat.ToUpper() == "Y")
         {
             Random rnd = new Random();
-            int magicNumber = 15; // Generate a random number between 1  and 20 (inclusive).
+            int magicNumber = rnd.Next(1, 20); // Generate a random number between 1  and 20 (inclusive).
             int tries = 0;
             Console.WriteLine("Welcome to the Magic Number Game!");
             while (true)
