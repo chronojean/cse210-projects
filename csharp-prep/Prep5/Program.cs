@@ -1,41 +1,22 @@
-using System;
-
-
-/*For this assignment, write a C# program that has several simple functions:
-
-DisplayWelcome - Displays the message, "Welcome to the Program!"
-PromptUserName - Asks for and returns the user's name (as a string)
-PromptUserNumber - Asks for and returns the user's favorite number (as an integer)
-SquareNumber - Accepts an integer as a parameter and returns that number squared (as an integer)
-DisplayResult - Accepts the user's name and the squared number and displays them.*/
-
-class Program
+public class Blind
 {
-    static string uName = "John Doe";
-    static float uNumber = 0;
-    static void DisplayWelcome(string msg="Welcome to the Program!"){
-        Console.WriteLine(msg);
-    }
-    static void PromptUserName(string msg="Please enter your name: "){
-        Console.Write(msg);
-        uName=Console.ReadLine();
-    }
-    static void PromptUserNumber(string msg="Please enter your favorite number: ")
+    private double _width;
+    private double _height;
+    private string _color;
+
+    public Blind(double width, double height, string color)
     {
-        Console.Write(msg);
-        uNumber = float.Parse(Console.ReadLine());
+        this._width = width;
+        this._height = height;
+        this._color = color;
     }
-    static float SquareNumber(float num){
-        return num*num;
-    }
-    static void DisplayResult(){
-        Console.WriteLine($"Hello there! {uName}, the square of your number is: {SquareNumber(uNumber)}");
-    }
-    static void Main(string[] args)
+    public void set_color(string color)
     {
-        DisplayWelcome();
-        PromptUserName();
-        PromptUserNumber();
-        DisplayResult();
+        this._color = color;
+    }
+    static void Main(String[] args)
+    {
+        Blind front_blind = new Blind(10, 10, "Blue");
+        Console.WriteLine($"The color of the front blind is: {front_blind._color}");
     }
 }
