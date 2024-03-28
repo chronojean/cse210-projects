@@ -1,7 +1,8 @@
+//Propt the user for custom Scripture, not Program provided.
 //Added a while to repeat as many scriptures as desired
-//Used a while to prompt the user to enter the reference.
-//added a try/catch inside previous while to prevent wrong reference input from crashing the program. exit on correct input using break;
+//added a try/catch inside previous while to prevent wrong reference input from crashing the program. exit the while on correct input using break;
 //use of a random to choose how many words to hide, and another random to hide choose what words to hide.
+//Nice robotic finished message.
 using System;
 
 class Program
