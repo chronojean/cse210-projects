@@ -11,6 +11,7 @@ class Program
         Console.WriteLine($"{maths.GetSummary()}\n{maths.GetHomeworkList()}");
         Console.WriteLine();
         Console.WriteLine($"{writing.GetSummary()}\n{writing.GetWritingInformation()}");
+        Console.Write("\nPress Enter to exit.\t");
         Console.ReadLine();
         Console.Clear();
     }
