@@ -26,13 +26,13 @@ public class ListingActivity : Activity
     public void Run()
     {
         List<string> userAnswers = new List<string>();
-        DateTime futureTime = DateTime.Now.AddSeconds(this.GetDuration());
         int currentSeconds = 0;
         Console.WriteLine("\nList as many responses you can to the follwing prompt:");
         Console.WriteLine($"--- {this.GetRandomPrompt()} ---");
         Console.Write("You may begin in: ");
         this.ShowCountDown(5, currentSeconds);
         Console.WriteLine();
+        DateTime futureTime = DateTime.Now.AddSeconds(this.GetDuration());
         while (DateTime.Now < futureTime)
         {
             Console.Write(">");
