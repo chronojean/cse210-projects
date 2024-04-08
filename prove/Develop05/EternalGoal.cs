@@ -4,10 +4,18 @@ public class EternalGoal : Goal
     {
         // No additional attributes needed for EternalGoal
     }
+    public override string GetName()
+    {
+        return _shortName;
+    }
 
     public override void RecordEvent()
     {
         // Logic for recording event for an eternal goal (if needed)
+    }
+    public override int GetPoints()
+    {
+        return _points;
     }
 
     public override bool IsComplete()
@@ -18,11 +26,14 @@ public class EternalGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description}";
+        string checkbox = IsComplete() ? "[x]" : "[ ]";
+        return $"{checkbox} {_shortName} ({_description})";
     }
+
 
     public override string GetStringRepresentation()
     {
-        return $"{_shortName}, {_description}, {_points}";
+        return $"EternalGoal:{_shortName},{_description},{_points}";
     }
+
 }

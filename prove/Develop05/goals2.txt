@@ -1,0 +1,6 @@
+575
+SimpleGoal:Simple Goal 1,Simple Description 1,50,True
+SimpleGoal:Simple Goal 2,Simple Descripion 2,50,True
+SimpleGoal:Simple Goal 3,Simple Description 3,50,True
+EternalGoal:Eternal Goal 1,Eternal Description 1,50
+ChecklistGoal:eat today,eat three times today,25,250,3,3

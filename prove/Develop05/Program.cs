@@ -4,6 +4,7 @@ class Program
 {
 	static void Main(string[] args)
 	{
+		Console.Clear();
 		// Create an instance of GoalManager
 		GoalManager goalManager = new GoalManager();
 
@@ -11,6 +12,7 @@ class Program
 		bool continueMenuLoop = true;
 		while (continueMenuLoop)
 		{
+			Console.WriteLine($"Your current score is: {goalManager.GetScore()} points");
 			// Display menu options
 			Console.WriteLine("Menu Options:");
 			Console.WriteLine("  1. Create New Goal");
@@ -25,7 +27,7 @@ class Program
 			string input = Console.ReadLine();
 			Console.WriteLine();
 
-			Console.WriteLine($"Your current score is: {goalManager.s} points");
+			Console.Clear();
 
 			// Perform action based on user choice
 			if (input == "1")
@@ -41,18 +43,20 @@ class Program
 			}
 			else if (input == "2")
 			{
-				// List Goals
+				// List Goals including the checkbox and other details
 				goalManager.ListGoalDetails();
 			}
 			else if (input == "3")
 			{
 				// Save Goals
-				goalManager.SaveGoals();
+				Console.Write("What is the filename for the goal file? ");
+				goalManager.SaveGoals(Console.ReadLine());
 			}
 			else if (input == "4")
 			{
 				// Load Goals
-				goalManager.LoadGoals();
+				Console.Write("What is the filename for the goal file? ");
+				goalManager.LoadGoals(Console.ReadLine());
 			}
 			else if (input == "5")
 			{

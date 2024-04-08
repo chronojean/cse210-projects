@@ -1,6 +1,10 @@
 public class SimpleGoal : Goal
 {
     private bool _isComplete;
+    public override string GetName()
+    {
+        return _shortName;
+    }
 
     public SimpleGoal(string name, string description, int points) : base(name, description, points)
     {
@@ -12,6 +16,10 @@ public class SimpleGoal : Goal
         // Logic to mark the simple goal as complete
         _isComplete = true;
     }
+    public override int GetPoints()
+    {
+        return _points;
+    }
 
     public override bool IsComplete()
     {
@@ -20,11 +28,15 @@ public class SimpleGoal : Goal
 
     public override string GetDetailsString()
     {
-        return $"{_shortName}: {_description}";
+        string checkbox = IsComplete() ? "[x]" : "[ ]";
+        return $"{checkbox} {_shortName} ({_description})";
     }
+
 
     public override string GetStringRepresentation()
     {
-        return $"{_shortName}, {_description}, {_points}, {_isComplete}";
+        string isComplete = _isComplete ? "True" : "False";
+        return $"SimpleGoal:{_shortName},{_description},{_points},{isComplete}";
     }
+
 }
