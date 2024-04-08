@@ -1,3 +1,8 @@
+//Added some extra Get methods for proper handling of bonus points, normal points and checklist finalization and bonus obtainance
+//Added some extra messages to the user like: Bonus unlocked and finishing the program
+//Looped some critical entries so the user can retype again if wrong input is set.
+//Handling of re-doing a checklist goal, by ex: excercise 3 times a week (and you did it 4) you get the points x4 properly and only 1 bonus for achieving your goal
+//Screen is cleared when requiered.
 using System;
 
 class Program
