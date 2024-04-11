@@ -6,7 +6,6 @@ namespace FinalProject.MyClasses
         {
         }
 
-        // Implementación del método abstracto para ingresos
         public override decimal GetAmount()
         {
             return _amount;

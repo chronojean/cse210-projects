@@ -4,12 +4,10 @@ namespace FinalProject.MyClasses
 {
 	public class Person : ContactInformation
 	{
-		// Atributos específicos de Person
 		private string _firstName;
 		private string _lastName;
 		private string _idCard;
 
-		// Constructor que incluye todos los campos
 		public Person(string nit, string rif, string idCard, string firstName, string lastName, string email, string[] phones, string webPage, string address)
 			: base(nit, rif, email, phones, webPage, address)
 		{

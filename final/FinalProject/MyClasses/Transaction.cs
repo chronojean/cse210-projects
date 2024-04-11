@@ -18,10 +18,8 @@ namespace FinalProject.MyClasses
 			_entity = entity;
 		}
 
-		// Método abstracto para obtener el monto
 		public abstract decimal GetAmount();
 
-		// Método para obtener quién realizó la transacción
 		public ContactInformation GetMadeBy()
 		{
 			return _entity;

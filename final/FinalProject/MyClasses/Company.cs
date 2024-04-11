@@ -4,11 +4,9 @@ namespace FinalProject.MyClasses
 {
 	public class Company : ContactInformation
 	{
-		// Atributos específicos de Company
 		private string _businessName;
 		private string _tradeName;
 
-		// Constructor que incluye todos los campos
 		public Company(string nit, string rif, string businessName, string tradeName, string email, string[] phones, string webPage, string address)
 			: base(nit, rif, email, phones, webPage, address)
 		{

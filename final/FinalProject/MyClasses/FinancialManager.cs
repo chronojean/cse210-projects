@@ -28,7 +28,6 @@ namespace FinalProject.MyClasses
 			FillDummyTransactions(60, 60);
 		}
 
-		// Método para agregar una compañía a la lista de contactos
 		public void AddCompany()
 		{
 			string nit, rif, businessName, tradeName, email, webPage, address;
@@ -105,13 +104,10 @@ namespace FinalProject.MyClasses
 
 		public void ListCompanies()
 		{
-			// Filtrar las compañías
 			var companies = _contacts.OfType<Company>();
 
-			// Ordenar alfabéticamente por TradeName
 			var sortedCompanies = companies.OrderBy(company => company.GetName());
 
-			// Mostrar la lista enumerada
 			Console.WriteLine("List of companies:");
 			int index = 1;
 			foreach (var company in sortedCompanies)
@@ -122,13 +118,10 @@ namespace FinalProject.MyClasses
 		}
 		public void ListPeople()
 		{
-			// Filtrar las personas
 			var people = _contacts.OfType<Person>();
 
-			// Ordenar alfabéticamente por nombre
 			var sortedPeople = people.OrderBy(person => person.GetName());
 
-			// Mostrar la lista enumerada
 			Console.WriteLine("List of people:");
 			int index = 1;
 			foreach (var person in sortedPeople)
@@ -166,7 +159,6 @@ namespace FinalProject.MyClasses
 			Console.Clear();
 			Console.WriteLine($"Select the entity associated with the {transactionTypeName}:");
 
-			// Display the list of entities sorted by name
 			var sortedEntities = _contacts
 				.OrderBy(contact => contact.GetName())
 				.ToList();
@@ -193,7 +185,6 @@ namespace FinalProject.MyClasses
 			Console.WriteLine($"Amount: {amount}");
 			Console.WriteLine($"Associated Entity: {selectedEntity.GetName()}");
 
-			// Ask if the information is correct
 			if (Utils.IsInformationCorrect())
 			{
 				Transaction transaction;
@@ -217,43 +208,30 @@ namespace FinalProject.MyClasses
 
 		public void ShowTransactions(int daysToConsider)
 		{
-			// Obtener las transacciones dentro del período especificado o todas si daysToConsider = 0
 			DateTime startDate = DateTime.Today.AddDays(-daysToConsider);
-			// var transactionsWithinPeriod = _transactions.Where(t => t.GetDate() >= startDate);
 			var transactionsWithinPeriod = daysToConsider == 0 ? _transactions : _transactions.Where(t => t.GetDate() >= startDate);
 
-
-
-
-			// Ordenar las transacciones por fecha
 			transactionsWithinPeriod = transactionsWithinPeriod.OrderBy(t => t.GetDate());
 
-			// Imprimir encabezado
 			Console.WriteLine("Date        | Entity            | Description                   | Expense        | Income ");
 			Console.WriteLine("==================================================================================================");
 
-			// Variables para almacenar el total de ingresos y gastos
 			decimal totalIncome = 0;
 			decimal totalExpenses = 0;
 
-			// Imprimir cada transacción dentro del período
 			foreach (var transaction in transactionsWithinPeriod)
 			{
-				// Obtener el nombre de la entidad
 				string entityName = transaction.GetMadeBy().GetName();
 
-				// Ajustar la longitud de las columnas
 				string date = transaction.GetDate().ToString("MM/dd/yyyy").PadRight(12);
 				string description = transaction.GetDescription().PadRight(30);
 				string amount = transaction.GetAmount().ToString("C").PadLeft(15);
 
-				// Determinar el color según el tipo de transacción
 				if (transaction is Income)
 				{
 					totalIncome += transaction.GetAmount();
 					Console.ForegroundColor = ConsoleColor.Green;
 
-					// Imprimir el monto de ingreso en la columna correspondiente
 					Console.WriteLine($"{date}| {entityName.PadRight(18)}| {description}|                | {amount}|");
 				}
 				else if (transaction is Expense)
@@ -261,19 +239,16 @@ namespace FinalProject.MyClasses
 					totalExpenses += transaction.GetAmount();
 					Console.ForegroundColor = ConsoleColor.Red;
 
-					// Imprimir el monto de gasto en la columna correspondiente
 					Console.WriteLine($"{date}| {entityName.PadRight(18)}| {description}| {amount}|                |");
 				}
 
 				Console.ResetColor();
 			}
 
-			// Imprimir resumen del estado dentro del período
 			Console.WriteLine("\nCurrent Overall Status:");
 			Console.WriteLine($"Total Income: {totalIncome:C}");
 			Console.WriteLine($"Total Expenses: {totalExpenses:C}");
 
-			// Calcular el balance dentro del período y establecer el color de la consola
 			decimal balance = totalIncome + totalExpenses;
 			Console.Write("Balance: ");
 			Console.ForegroundColor = balance >= 0 ? ConsoleColor.Green : ConsoleColor.Red;
@@ -313,20 +288,16 @@ namespace FinalProject.MyClasses
 		{
 			string forecastDuration = daysToForecast == 1 ? "tomorrow" : $"the next {daysToForecast} days";
 
-			// Calcular los promedios de ingresos y gastos de los últimos 90 días
 			decimal averageIncome;
 			decimal averageExpenses;
 			CalculateAverageIncomeAndExpenses(out averageIncome, out averageExpenses, 90);
 
-			// Calcular las proyecciones para el futuro
 			decimal projectedIncome = averageIncome * daysToForecast;
 			decimal projectedExpenses = averageExpenses * daysToForecast;
 
-			// Calcular la ganancia necesaria para un crecimiento del 6% en el período de tiempo especificado
 			decimal grossProfit = projectedIncome - projectedExpenses;
 			decimal growthIncome = averageIncome * daysToForecast * 1.06m;
 
-			// Imprimir la proyección y la ganancia necesaria
 			Console.WriteLine($"Predicted Expenses for {forecastDuration}: {projectedExpenses:C}");
 			Console.WriteLine($"A gross income equivalent to {growthIncome:C} is needed for {forecastDuration} to achieve a daily growth of 6%.");
 			Console.WriteLine("Based on the company's current average income.");
@@ -364,7 +335,6 @@ namespace FinalProject.MyClasses
 		{
 			Random random = new Random();
 
-			// Crear 30 gastos aleatorios
 			for (int i = 0; i < numberOfTransactions / 2; i++)
 			{
 				string transactionID = $"EXP-{i + 1}";
@@ -377,7 +347,6 @@ namespace FinalProject.MyClasses
 				_transactions.Add(expense);
 			}
 
-			// Crear 30 ingresos aleatorios
 			for (int i = 0; i < numberOfTransactions / 2; i++)
 			{
 				string transactionID = $"INC-{i + 1}";
@@ -398,10 +367,8 @@ namespace FinalProject.MyClasses
 		{
 			Random random = new Random();
 
-			// Lista de nombres aleatorios para personas
 			string[] firstNames = { "Emma", "Noah", "Olivia", "Liam", "Ava", "William", "Sophia", "Mason", "Isabella", "James", "Charlotte", "Benjamin", "Amelia", "Lucas", "Mia", "Henry", "Harper", "Alexander", "Evelyn", "Michael", "Abigail", "Elijah", "Emily", "Daniel", "Elizabeth", "Matthew", "Sofia", "Jackson", "Avery", "Sebastian", "Ella", "David", "Scarlett", "Joseph", "Grace", "Gabriel", "Chloe", "Carter", "Victoria", "Owen", "Riley", "Wyatt", "Aria", "John", "Luna", "Jack", "Hannah" };
 
-			// Agregar 4 empresas aleatorias (igual que antes)
 			for (int i = 0; i < 4; i++)
 			{
 				string nit = $"NIT-{random.Next(100000000, 999999999)}-{random.Next(1, 9)}";
@@ -417,7 +384,6 @@ namespace FinalProject.MyClasses
 				_contacts.Add(company);
 			}
 
-			// Agregar 2 personas aleatorias con nombres reales
 			for (int i = 0; i < 2; i++)
 			{
 				string nit = $"NIT-{random.Next(100000000, 999999999)}-{random.Next(1, 9)}";
