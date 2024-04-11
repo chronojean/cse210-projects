@@ -2,7 +2,7 @@ namespace FinalProject.MyClasses
 {
     public class Income : Transaction
     {
-        public Income(DateTime date, string description, decimal amount, ContactInformation entity) : base(date, description, amount, entity)
+        public Income(string transactionID, DateTime date, string description, decimal amount, ContactInformation entity) : base(transactionID, date, description, amount, entity)
         {
         }
 

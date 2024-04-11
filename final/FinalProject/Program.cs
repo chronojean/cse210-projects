@@ -22,7 +22,7 @@ public class Program
 			"Add Company",
 			"Add Person",
 			"List Companies",
-			"List Perons",
+			"List People",
 			"Register Expense",
 			"Register Income",
 			"Show Current Overall Status",
@@ -39,8 +39,16 @@ public class Program
 			{"2",fm.AddCompany},
 			{"3",fm.AddPerson},
 			{"4",fm.ListCompanies},
-			{"5",fm.ListPeople}
-			// You can add actions for other options here.
+			{"5",fm.ListPeople},
+			{"6",() => fm.RecordTransaction(true)},//Expense
+			{"7",() => fm.RecordTransaction(false)},//Income
+			{"8",() => fm.ShowTransactions(0)},
+			{"9",() => fm.ShowTransactions(1)},
+			{"10",() => fm.ShowTransactions(7)},
+			{"11",() => fm.ShowTransactions(30)},
+			{"12",() => fm.ShowForecast(1)},
+			{"13",() => fm.ShowForecast(7)},
+			{"14",() => fm.ShowForecast(30)}
 		};
 
 		Menu menu = new Menu(options, actions);

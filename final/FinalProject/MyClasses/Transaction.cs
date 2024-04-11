@@ -2,17 +2,20 @@ namespace FinalProject.MyClasses
 {
 	public abstract class Transaction
 	{
+		protected string _transactionID;
+
 		protected DateTime _date;
 		protected string _description;
 		protected decimal _amount;
-		protected ContactInformation _entity; // Nuevo atributo para representar quién realizó la transacción
+		protected ContactInformation _entity;
 
-		public Transaction(DateTime date, string description, decimal amount, ContactInformation entity)
+		public Transaction(string transactionID, DateTime date, string description, decimal amount, ContactInformation entity)
 		{
+			_transactionID = transactionID;
 			_date = date;
 			_description = description;
 			_amount = amount;
-			_entity = entity; // Se asigna la persona o compañía que realizó la transacción
+			_entity = entity;
 		}
 
 		// Método abstracto para obtener el monto
@@ -22,6 +25,14 @@ namespace FinalProject.MyClasses
 		public ContactInformation GetMadeBy()
 		{
 			return _entity;
+		}
+		public DateTime GetDate()
+		{
+			return _date;
+		}
+		public string GetDescription()
+		{
+			return _description;
 		}
 	}
 }
